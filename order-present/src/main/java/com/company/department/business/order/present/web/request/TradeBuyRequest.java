@@ -15,9 +15,9 @@ public class TradeBuyRequest {
     /** 买家id */
     private Long buyerId;
     /** 商品id */
-    private List<Long> itemIdList;
-    /** 优惠id */
-    private Long promotionId;
+    private Long goodsId;
+    /** 商品件数 */
+    private Long itemCount;
 
     public TradeBuyCommand asCommand() {
         TradeBuyCommand command = BeanHelper.copyProperties(new TradeBuyCommand(), this);

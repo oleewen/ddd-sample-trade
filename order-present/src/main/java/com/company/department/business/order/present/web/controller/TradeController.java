@@ -36,10 +36,10 @@ public class TradeController {
             return TradeBuyResponse.empty();
         }
 
-        /** 补充请求参数 */
+        /** 请求转命令 */
         TradeBuyCommand buyCommand = trade.asCommand();
 
-        /** 交易创建 */
+        /** 交易下单 */
         TradeBuyResult result = tradeFlow.doBuy(buyCommand);
 
         /** 输出转换 */
