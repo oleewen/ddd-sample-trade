@@ -1,0 +1,58 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <parent>
+        <artifactId>order</artifactId>
+        <groupId>com.company.department.business</groupId>
+        <version>1.0.0-SNAPSHOT</version>
+    </parent>
+    <modelVersion>4.0.0</modelVersion>
+
+    <artifactId>order-application</artifactId>
+    <packaging>jar</packaging>
+
+    <name>order-application</name>
+    <url>http://maven.apache.org</url>
+
+
+    <dependencies>
+        <!-- ======= -->
+        <!-- 模块依赖 -->
+        <!-- ======= -->
+        <dependency>
+            <groupId>com.company.department.business</groupId>
+            <artifactId>order-domain</artifactId>
+        </dependency>
+
+        <!-- ======= -->
+        <!-- 二方依赖 -->
+        <!-- ======= -->
+        <dependency>
+            <groupId>org.springframework.ext</groupId>
+            <artifactId>springframework-ext-biz</artifactId>
+        </dependency>
+
+        <!-- ======= -->
+        <!-- 三方依赖 -->
+        <!-- ======= -->
+        <dependency>
+            <groupId>com.squareup.retrofit2</groupId>
+            <artifactId>retrofit</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>com.squareup.retrofit2</groupId>
+            <artifactId>converter-jackson</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>com.fasterxml.jackson.core</groupId>
+            <artifactId>jackson-core</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-beans</artifactId>
+        </dependency>
+
+        <!-- ======= -->
+        <!-- 测试依赖 -->
+        <!-- ======= -->
+    </dependencies>
+</project>

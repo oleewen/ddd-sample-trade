@@ -1,0 +1,49 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <parent>
+        <artifactId>order</artifactId>
+        <groupId>com.company.department.business</groupId>
+        <version>1.0.0-SNAPSHOT</version>
+    </parent>
+    <modelVersion>4.0.0</modelVersion>
+
+    <artifactId>order-domain</artifactId>
+    <packaging>jar</packaging>
+
+    <name>order-domain</name>
+    <url>http://maven.apache.org</url>
+
+    <dependencies>
+        <!-- ======= -->
+        <!-- 二方依赖 -->
+        <!-- ======= -->
+        <dependency>
+            <groupId>org.springframework.ext</groupId>
+            <artifactId>springframework-ext-domain</artifactId>
+        </dependency>
+        
+        <!-- ======= -->
+        <!-- 三方依赖 -->
+        <!-- ======= -->
+        <!-- spring -->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-autoconfigure</artifactId>
+        </dependency>
+        <!-- logger -->
+        <dependency>
+            <groupId>org.slf4j</groupId>
+            <artifactId>slf4j-api</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>org.projectlombok</groupId>
+            <artifactId>lombok</artifactId>
+        </dependency>
+
+        <!-- ======= -->
+        <!-- 测试依赖 -->
+        <!-- ======= -->
+
+    </dependencies>
+</project>
