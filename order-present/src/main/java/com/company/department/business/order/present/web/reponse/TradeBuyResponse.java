@@ -23,6 +23,6 @@ public class TradeBuyResponse extends Response<TradeBuyResult> {
     }
 
     public static TradeBuyResponse empty() {
-        return new TradeBuyResponse(StatusCode.PARAMEMTER_VALIDATE_ILLEGAL);
+        return new TradeBuyResponse(StatusCode.PARAMETER_VALIDATE_ILLEGAL);
     }
 }

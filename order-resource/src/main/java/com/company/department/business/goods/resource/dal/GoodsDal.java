@@ -6,6 +6,7 @@ import com.company.department.business.goods.resource.call.GoodsCall;
 import com.company.department.business.goods.resource.entity.GoodsEntity;
 import com.company.department.business.goods.resource.factory.GoodsFactory;
 import org.springframework.ext.common.aspect.Call;
+import org.springframework.ext.common.exception.ExceptionHelper;
 import org.springframework.stereotype.Repository;
 
 import javax.annotation.Resource;
@@ -23,10 +24,14 @@ public class GoodsDal implements GoodsRepository {
     private GoodsCall goodsCall;
 
     @Override
-    @Call
+    @Call(status = 30001, errorCode = "TRADE_GOODS_GET_EXCEPTION", errorMessage = "查询商品异常")
     public Goods acquireGoods(Long goodsId) {
         GoodsEntity goods = goodsCall.getGoodsById(goodsId);
 
-        return GoodsFactory.valueOf(goods);
+        if (goods != null) {
+            return GoodsFactory.valueOf(goods);
+        }
+
+        throw ExceptionHelper.createNestedException(30002, "TRADE_GOODS_NOT_FOUND", "找不到商品");
     }
 }

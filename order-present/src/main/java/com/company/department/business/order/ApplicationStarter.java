@@ -16,6 +16,8 @@ import java.text.SimpleDateFormat;
 import java.util.List;
 
 /**
+ * 应用启动器
+ *
  * @author only
  * @since 2020-05-22
  */

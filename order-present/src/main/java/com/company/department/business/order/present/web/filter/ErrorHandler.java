@@ -38,8 +38,8 @@ public class ErrorHandler {
 
     @ExceptionHandler(HttpMessageNotReadableException.class)
     public Response handlerException(HttpMessageNotReadableException e) {
-        logger.error(StatusCode.HTTP_ACESS_ERROR.getErrorCode(), e);
-        Response resp = Response.create(StatusCode.HTTP_ACESS_ERROR);
+        logger.error(StatusCode.HTTP_ACCESS_ERROR.getErrorCode(), e);
+        Response resp = Response.create(StatusCode.HTTP_ACCESS_ERROR);
         return resp;
     }
 

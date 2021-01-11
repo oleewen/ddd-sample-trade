@@ -7,6 +7,7 @@ import com.company.department.business.order.resource.entity.OrderEntity;
 import com.company.department.business.order.resource.factory.OrderFactory;
 import com.company.department.business.order.resource.mapper.OrderMapper;
 import org.springframework.ext.common.aspect.Call;
+import org.springframework.ext.common.exception.ExceptionHelper;
 import org.springframework.stereotype.Repository;
 
 import javax.annotation.Resource;
@@ -24,7 +25,7 @@ public class OrderDao implements OrderRepository {
     private OrderMapper orderMapper;
 
     @Override
-    @Call
+    @Call(status = 20001, errorCode = "TRADE_ORDER_CREATE_EXCEPTION", errorMessage = "订单创建异常")
     public void create(Order order) {
         // 领域对象转数据对象
         OrderEntity entity = OrderFactory.instance(order);
@@ -36,7 +37,7 @@ public class OrderDao implements OrderRepository {
     }
 
     @Override
-    @Call
+    @Call(status = 20002, errorCode = "TRADE_ORDER_ENABLE_EXCEPTION", errorMessage = "订单下单失败")
     public boolean enable(Order order) {
         // 领域对象转数据对象
         OrderEntity entity = OrderFactory.instance(order);
@@ -49,6 +50,6 @@ public class OrderDao implements OrderRepository {
             return true;
         }
 
-        throw new IllegalStateException("order enable failure");
+        throw ExceptionHelper.createNestedException(20003, "TRADE_ORDER_ENABLE_FAILURE", "订单下单失败");
     }
 }
