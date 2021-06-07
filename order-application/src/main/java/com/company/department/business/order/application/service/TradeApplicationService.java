@@ -1,4 +1,4 @@
-package com.company.department.business.order.application.flow;
+package com.company.department.business.order.application.service;
 
 import com.company.department.business.order.application.action.InventoryLockAction;
 import com.company.department.business.order.application.action.OrderCreateAction;
@@ -17,7 +17,7 @@ import javax.annotation.Resource;
  * @date 2020-05-22
  */
 @Component
-public class TradeFlow {
+public class TradeApplicationService {
     /** 库存锁定 */
     @Resource
     private InventoryLockAction inventoryLockAction;
