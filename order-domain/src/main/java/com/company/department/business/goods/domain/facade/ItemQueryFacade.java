@@ -1,4 +1,4 @@
-package com.company.department.business.goods.domain.handler;
+package com.company.department.business.goods.domain.facade;
 
 import com.company.department.business.goods.domain.model.Goods;
 import com.company.department.business.goods.domain.repository.GoodsRepository;
@@ -14,7 +14,7 @@ import javax.annotation.Resource;
  * @since 2020-05-22
  */
 @Component
-public class ItemQueryHandler {
+public class ItemQueryFacade {
     /** 商品资源库 */
     @Resource
     private GoodsRepository goodsRepository;
