@@ -4,65 +4,75 @@
 
     --------------              --------------
     |            |              |            |
-    |   client   |              |  service   |_ __ __ __ __ __ _
-    |            |              |            |                  \
-    --------------              --------------                   \
-                \                 /        \                      \
-                 \               /          \                      \
-                  \             /            \                      \
-                  _\|         |/_            _\|                     \
-                  --------------               ---------------        \      --------------------
-                  |            |               |             |          \_ _\|                  |
-                  |     api    |               | application |              /|  infrastructure  |
-                  |            |               |             |               |                  |
-                  --------------               ---------------               --------------------
-                                                             \                  /
-                                                              \                /
-                                                               \              /
-                                                               _\|          |/_
-                                                                --------------
-                                                                |            |
-                                                                |   domain   |
-                                                                |            |
+    |   client   |              |  service   |_ __ __ __ __ __ __ __ __ __ __ __ __ __ __ __ __ __ __ __ __ _
+    |            |              |            |                                    \                          \
+    --------------              --------------                                     \                          \
+                \                 /        \                                        \                          \
+                 \               /          \                                        \                          \
+                  \             /            \                                        \                          \
+                  _\|         |/_            _\|                                      _\|                        _\|
+                  --------------               ---------------               --------------------              ----------------
+                  |            |               |             |               |                  |              |              |
+                  |     api    |               | application |               |  infrastructure  |              |  dependency  |
+                  |            |               |             |               |                  |              |              |
+                  --------------               ---------------               --------------------              ----------------
+                                                             \                  /                                 /
+                                                              \                /                                 /
+                                                               \              /                                 /
+                                                               _\|          |/_                                / 
+                                                                --------------                                /
+                                                                |            |                               /  
+                                                                |   domain   |/__ __ __ __ __ __ __ __ __ __/ 
+                                                                |            |\
                                                                 --------------
 
 ## 各模块职责
 
 - domain：领域服务层
-    - 领域模型层：领域对象model、领域服务service、资源库repository、事件event、命令command
-    - 查询处理器queryHandler
+    - 领域模型层：领域对象model、领域服务service、资源库repository、事件event、查询门面facade
     - 代码结构如下
         ```
         - com.${company}.${system}.${appname}
         \- domain
-          |- handler
-          |- model
           |- service
-          |- command
+          |- facade
+          |- model
           |- event
           \- repository
         ```
 - application：应用服务层
-    - 面向用例或用户故事，实现处理流程、处理节点
+    - 面向用例或用户故事，实现处理流程（service）、处理节点（action）
     - 代码结构如下
         ```
         - com.${company}.${system}.${appname}
-        |- flow
-        \- action
+        |- service
+        |- action
+        |- command
+        |- query
+        \- result
         ```
 - infrastructure：资源层，实现数据访问
-    - 含数据访问层dal、数据访问对象dao、数据库配置config、数据对象entity、数据映射mapper、数据对象&领域对象工厂
+    - 含数据访问对象dao、数据库配置config、数据对象entity、数据映射mapper、数据对象&领域对象工厂
     - 代码结构如下
         ```
         - com.${company}.${system}.${appname}
         \- infrastructure
-          |- dal
           |- dao
           |- config
           |- entity
           |- mapper
           \- factory
         ```
+- dependency：资源层，实现数据访问
+    - 含数据访问层dal、服务调用call，数据对象&领域对象工厂
+    - 代码结构如下
+      ```
+      - com.${company}.${system}.${appname}
+      \- infrastructure
+        |- dal
+        |- call
+        \- factory
+      ```
 - api：公共api包，含公共常量&通用定义，服务接口定义
     - RPC服务接口定义Service
     - 输入输出对象：Request、Response、DTO
@@ -99,6 +109,8 @@
           | \- impl
           \- web
             |- controller
+            |- request
+            |- response
             |- config
             \- filter
         ```
