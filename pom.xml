@@ -2,21 +2,22 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
 
-    <groupId>com.company.department.business</groupId>
+    <groupId>com.company.system</groupId>
     <artifactId>order</artifactId>
     <version>1.0.0-SNAPSHOT</version>
     <packaging>pom</packaging>
 
     <properties>
-        <start-class>com.company.department.business.order.ApplicationStarter</start-class>
+        <start-class>com.compan.system.order.ApplicationStarter</start-class>
         <spring.boot.version>1.5.3.RELEASE</spring.boot.version>
         <spring.version>4.3.8.RELEASE</spring.version>
         <springfox.version>2.7.0</springfox.version>
     </properties>
 
     <modules>
-        <module>order-present</module>
-        <module>order-resource</module>
+        <module>order-service</module>
+        <module>order-infrastructure</module>
+        <module>order-dependency</module>
         <module>order-application</module>
         <module>order-domain</module>
         <module>order-client</module>
@@ -29,32 +30,37 @@
             <!-- 模块依赖 -->
             <!-- ======= -->
             <dependency>
-                <groupId>com.company.department.business</groupId>
-                <artifactId>order-present</artifactId>
+                <groupId>com.company.system</groupId>
+                <artifactId>order-service</artifactId>
                 <version>${project.version}</version>
             </dependency>
             <dependency>
-                <groupId>com.company.department.business</groupId>
-                <artifactId>order-resource</artifactId>
+                <groupId>com.company.system</groupId>
+                <artifactId>order-infrastructure</artifactId>
                 <version>${project.version}</version>
             </dependency>
             <dependency>
-                <groupId>com.company.department.business</groupId>
+                <groupId>com.company.system</groupId>
+                <artifactId>order-dependency</artifactId>
+                <version>${project.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.company.system</groupId>
                 <artifactId>order-application</artifactId>
                 <version>${project.version}</version>
             </dependency>
             <dependency>
-                <groupId>com.company.department.business</groupId>
+                <groupId>com.company.system</groupId>
                 <artifactId>order-domain</artifactId>
                 <version>${project.version}</version>
             </dependency>
             <dependency>
-                <groupId>com.company.department.business</groupId>
+                <groupId>com.company.system</groupId>
                 <artifactId>order-api</artifactId>
                 <version>${project.version}</version>
             </dependency>
             <dependency>
-                <groupId>com.company.department.business</groupId>
+                <groupId>com.company.system</groupId>
                 <artifactId>order-client</artifactId>
                 <version>${project.version}</version>
             </dependency>
@@ -62,26 +68,26 @@
             <!-- ======= -->
             <!-- 二方依赖 -->
             <!-- ======= -->
-            <dependency>
-                <groupId>org.springframework.ext</groupId>
-                <artifactId>springframework-ext-common</artifactId>
-                <version>1.1.2-SNAPSHOT</version>
-            </dependency>
-            <dependency>
-                <groupId>org.springframework.ext</groupId>
-                <artifactId>springframework-ext-domain</artifactId>
-                <version>1.0.4-SNAPSHOT</version>
-            </dependency>
-            <dependency>
-                <groupId>org.springframework.ext</groupId>
-                <artifactId>springframework-ext-client</artifactId>
-                <version>1.0.4-SNAPSHOT</version>
-            </dependency>
-            <dependency>
-                <groupId>org.springframework.ext</groupId>
-                <artifactId>springframework-ext-biz</artifactId>
-                <version>1.1.2-SNAPSHOT</version>
-            </dependency>
+<!--            <dependency>-->
+<!--                <groupId>org.springframework.ext</groupId>-->
+<!--                <artifactId>springframework-ext-common</artifactId>-->
+<!--                <version>1.1.2-SNAPSHOT</version>-->
+<!--            </dependency>-->
+<!--            <dependency>-->
+<!--                <groupId>org.springframework.ext</groupId>-->
+<!--                <artifactId>springframework-ext-domain</artifactId>-->
+<!--                <version>1.0.4-SNAPSHOT</version>-->
+<!--            </dependency>-->
+<!--            <dependency>-->
+<!--                <groupId>org.springframework.ext</groupId>-->
+<!--                <artifactId>springframework-ext-client</artifactId>-->
+<!--                <version>1.0.4-SNAPSHOT</version>-->
+<!--            </dependency>-->
+<!--            <dependency>-->
+<!--                <groupId>org.springframework.ext</groupId>-->
+<!--                <artifactId>springframework-ext-biz</artifactId>-->
+<!--                <version>1.1.2-SNAPSHOT</version>-->
+<!--            </dependency>-->
 
             <!-- ======= -->
             <!-- 三方依赖 -->
@@ -89,7 +95,7 @@
             <dependency>
                 <groupId>org.projectlombok</groupId>
                 <artifactId>lombok</artifactId>
-                <version>1.16.8</version>
+                <version>1.18.20</version>
             </dependency>
             <dependency>
                 <groupId>org.slf4j</groupId>

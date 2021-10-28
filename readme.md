@@ -4,18 +4,18 @@
 
     --------------              --------------
     |            |              |            |
-    |   client   |              |  present   |_ __ __ __ __ __ _
+    |   client   |              |  service   |_ __ __ __ __ __ _
     |            |              |            |                  \
     --------------              --------------                   \
                 \                 /        \                      \
                  \               /          \                      \
                   \             /            \                      \
                   _\|         |/_            _\|                     \
-                  --------------               --------------         \     --------------
-                  |            |               |            |          \_ _\|            |
-                  |     api    |               | application|              /|  resource  |
-                  |            |               |            |               |            |
-                  --------------               --------------               --------------
+                  --------------               ---------------        \      --------------------
+                  |            |               |             |          \_ _\|                  |
+                  |     api    |               | application |              /|  infrastructure  |
+                  |            |               |             |               |                  |
+                  --------------               ---------------               --------------------
                                                              \                  /
                                                               \                /
                                                                \              /
@@ -33,7 +33,7 @@
     - 查询处理器queryHandler
     - 代码结构如下
         ```
-        - com.${company}.${department}.${business}.${appname}
+        - com.${company}.${system}.${appname}
         \- domain
           |- handler
           |- model
@@ -46,16 +46,16 @@
     - 面向用例或用户故事，实现处理流程、处理节点
     - 代码结构如下
         ```
-        - com.${company}.${department}.${business}.${appname}
+        - com.${company}.${system}.${appname}
         |- flow
         \- action
         ```
-- resource：资源层，实现数据访问
+- infrastructure：资源层，实现数据访问
     - 含数据访问层dal、数据访问对象dao、数据库配置config、数据对象entity、数据映射mapper、数据对象&领域对象工厂
     - 代码结构如下
         ```
-        - com.${company}.${department}.${business}.${appname}
-        \- resource
+        - com.${company}.${system}.${appname}
+        \- infrastructure
           |- dal
           |- dao
           |- config
@@ -64,12 +64,12 @@
           \- factory
         ```
 - api：公共api包，含公共常量&通用定义，服务接口定义
-    - 公共常量const、枚举enum、通用util类、异常类
     - RPC服务接口定义Service
     - 输入输出对象：Request、Response、DTO
+    - 开放的常量const、枚举enum、通用util类、异常类
     - 代码结构如下
         ```
-        - com.${company}.${department}.${business}.${appname}
+        - com.${company}.${system}.${appname}
         |- common
         | |- consts
         | |- enums
@@ -86,15 +86,15 @@
     - 富客户端
     - 代码结构如下
         ```
-        - com.${company}.${department}.${business}.${appname}
+        - com.${company}.${system}.${appname}
         \_ client
         ```
-- present：用户接口层，即表现层（present），实现表现层逻辑（协议、输入&输出转换）
-    - 定义present层接口（HTTP协议、RPC协议）
+- service：用户接口层，即表现层，实现表现层逻辑（协议、输入&输出转换）
+    - 定义service层接口（HTTP协议）和实现（RPC协议）
     - 代码结构如下
         ```
-        - com.${company}.${department}.${business}.${appname}
-        |- present
+        - com.${company}.${system}.${appname}
+        |- service
           |- rpc
           | \- impl
           \- web
