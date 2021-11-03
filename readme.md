@@ -73,13 +73,13 @@
 - dependency：资源层，实现数据访问
     - 含数据访问层dal、服务调用call，数据对象&领域对象工厂
     - 代码结构如下
-      ```
-      - com.${company}.${system}.${appname}
-      \- infrastructure
-        |- dal
-        |- call
-        \- factory
-      ```
+       ```
+       - com.${company}.${system}.${appname}
+       \- dependency
+         |- dal
+         |- call
+         \- factory
+       ```
 - api：公共api包，含公共常量&通用定义，服务接口定义
     - RPC服务接口定义Service
     - 输入输出对象：Request、Response、DTO
