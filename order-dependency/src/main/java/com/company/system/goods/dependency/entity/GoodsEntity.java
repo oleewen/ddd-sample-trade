@@ -1,4 +1,4 @@
-package com.company.system.goods.resource.entity;
+package com.company.system.goods.dependency.entity;
 
 import lombok.Data;
 

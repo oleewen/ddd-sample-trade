@@ -1,4 +1,4 @@
-package com.company.system.order.resource.entity;
+package com.company.system.order.infrastructure.entity;
 
 import lombok.Data;
 

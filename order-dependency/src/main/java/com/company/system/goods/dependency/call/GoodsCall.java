@@ -1,6 +1,6 @@
-package com.company.system.goods.resource.call;
+package com.company.system.goods.dependency.call;
 
-import com.company.system.goods.resource.entity.GoodsEntity;
+import com.company.system.goods.dependency.entity.GoodsEntity;
 import org.springframework.stereotype.Repository;
 
 /**

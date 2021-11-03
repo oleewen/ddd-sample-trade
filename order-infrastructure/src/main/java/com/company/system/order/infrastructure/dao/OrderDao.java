@@ -1,11 +1,11 @@
-package com.company.system.order.resource.dao;
+package com.company.system.order.infrastructure.dao;
 
 import com.company.system.order.domain.model.Order;
 import com.company.system.order.domain.model.OrderId;
 import com.company.system.order.domain.repository.OrderRepository;
-import com.company.system.order.resource.entity.OrderEntity;
-import com.company.system.order.resource.factory.OrderFactory;
-import com.company.system.order.resource.mapper.OrderMapper;
+import com.company.system.order.infrastructure.entity.OrderEntity;
+import com.company.system.order.infrastructure.factory.OrderFactory;
+import com.company.system.order.infrastructure.mapper.OrderMapper;
 import org.springframework.ext.common.aspect.Call;
 import org.springframework.ext.common.exception.ExceptionHelper;
 import org.springframework.stereotype.Repository;

@@ -1,6 +1,6 @@
-package com.company.system.order.resource.mapper;
+package com.company.system.order.infrastructure.mapper;
 
-import com.company.system.order.resource.entity.OrderEntity;
+import com.company.system.order.infrastructure.entity.OrderEntity;
 
 /**
  * 订单Mapper

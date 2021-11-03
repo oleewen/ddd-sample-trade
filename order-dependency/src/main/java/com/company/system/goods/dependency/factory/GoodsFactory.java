@@ -1,9 +1,9 @@
-package com.company.system.goods.resource.factory;
+package com.company.system.goods.dependency.factory;
 
 import com.company.system.goods.domain.model.Goods;
 import com.company.system.goods.domain.model.GoodsId;
 import com.company.system.goods.domain.model.Price;
-import com.company.system.goods.resource.entity.GoodsEntity;
+import com.company.system.goods.dependency.entity.GoodsEntity;
 
 /**
  * 商品工厂

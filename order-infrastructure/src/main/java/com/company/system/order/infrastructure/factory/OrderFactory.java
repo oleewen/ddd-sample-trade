@@ -1,7 +1,7 @@
-package com.company.system.order.resource.factory;
+package com.company.system.order.infrastructure.factory;
 
 import com.company.system.order.domain.model.Order;
-import com.company.system.order.resource.entity.OrderEntity;
+import com.company.system.order.infrastructure.entity.OrderEntity;
 
 /**
  * 订单工厂

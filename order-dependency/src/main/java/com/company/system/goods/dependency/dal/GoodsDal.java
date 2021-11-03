@@ -1,10 +1,10 @@
-package com.company.system.goods.resource.dal;
+package com.company.system.goods.dependency.dal;
 
 import com.company.system.goods.domain.model.Goods;
 import com.company.system.goods.domain.repository.GoodsRepository;
-import com.company.system.goods.resource.call.GoodsCall;
-import com.company.system.goods.resource.entity.GoodsEntity;
-import com.company.system.goods.resource.factory.GoodsFactory;
+import com.company.system.goods.dependency.call.GoodsCall;
+import com.company.system.goods.dependency.entity.GoodsEntity;
+import com.company.system.goods.dependency.factory.GoodsFactory;
 import org.springframework.ext.common.aspect.Call;
 import org.springframework.ext.common.exception.ExceptionHelper;
 import org.springframework.stereotype.Repository;
