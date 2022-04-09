@@ -8,40 +8,26 @@
 
 - 请求 = 动词 + 宾语
     - 动词：采用标准HTTP方法，对应CRUD操作
-
-- 宾语：必须是名词，优先采用复数，偶有例外
-
-- 过滤：支持过滤参数，支持分页offset/limit
-
-- 聚合：第一个名词为聚合根，名词路径代表聚合关系
-
-- 角色：角色 + 请求 = 业务场景，Customer + /items VS Merchant + /items
-
+    - 宾语：必须是名词，优先采用复数，偶有例外
+    - 过滤：支持过滤参数，支持分页offset/limit
+    - 聚合：第一个名词为聚合根，名词路径代表聚合关系
+    - 角色：角色 + 请求 = 业务场景，Customer + /items VS Merchant + /items
 - URI = http(s)://{域名}/{业务域}/{上下文}/{聚合根}/({聚合})/{动作}
     - POST [https://www.youzan.com/commodity/goods/items](https://www.youzan.com/commodity/goods/v1/items)
-
-- POST [https://www.youzan.com/commodity/goods/items/publish](https://www.youzan.com/commodity/goods/v1/items/publish)
-
-- GET [https://www.youzan.com/commodity/goods/items/skus](https://www.youzan.com/commodity/goods/v1/items/skus)
-
-- GET [https://www.youzan.com/commodity/category/categories](https://www.youzan.com/commodity/category/v1/categories)
+    - POST [https://www.youzan.com/commodity/goods/items/publish](https://www.youzan.com/commodity/goods/v1/items/publish)
+    - GET [https://www.youzan.com/commodity/goods/items/skus](https://www.youzan.com/commodity/goods/v1/items/skus)
+    - GET [https://www.youzan.com/commodity/category/categories](https://www.youzan.com/commodity/category/v1/categories)
 
 ### 响应设计原则
 
 - 采用HTTP状态码
     - 每次请求，都有响应，响应包括HTTP状态码和数据两部分
-
 - 状态码，共100余种，均有约定解释，行业通用
     - 1XX：相关信息（API不需要）
-
-- 2XX：操作成功
-
-- 3XX：请求重定向
-
-- 4XX：客户端错误
-
-- 5XX：服务器错误
-
+    - 2XX：操作成功
+    - 3XX：请求重定向
+    - 4XX：客户端错误
+    - 5XX：服务器错误
 - 响应出错，要有error返回错误信息
 
 ## 接口设计规范
@@ -55,15 +41,9 @@
 |PATCH|更新/Update| 用作部分更新对象部分信息|
 |DELETE|删除/Delete| 删除记录，有立即删除和非立即删除
 
-
-
 ### API规范
-
 一个商品（item）对有多个标准库存单元（SKU），如下图
-
 ![img](https://qima.feishu.cn/space/api/box/stream/download/asynccode/?code=NTAyNjkxYzcwMmU1NDc3MDI2MDZiNTAxM2Y4NzM4ODdfcnU2WGpYQlA5TGFUSEYxdjNvYWZCSUxsTmtYcUQ4cmJfVG9rZW46Ym94Y24yUWRxblI0ejVOQVpVR2Q5U0tOTGtnXzE2NDk0NzQ5NDY6MTY0OTQ3ODU0Nl9WNA)
-
-
 
 #### 接口规范
 |操作|接口|语义|
@@ -83,7 +63,6 @@
 |DELETE| /item/disable?item_id=:id |禁用某个指定的商品
 |DELETE| /items/skus?item_id=:id&sku_id=:sku_id |删除某个指定商品的指定sku
 
-
 #### 常见过滤
 |参数|含义|举例|
 |---|---|---|
@@ -95,61 +74,37 @@
 |start_time |开始时间 |start_time=2020-12-27 00:00:00 
 |end_time| 结束时间 |start_time=2020-12-31 00:00:00
 
-
 # RPC接口设计参考规范
-
 ## 接口设计原则
-
 ### 请求设计原则
-
 - 请求 = 宾语 + 动词
     - 宾语：必须是名词，优先采用单数
-
 - 动词：采用标准方法create/get|list/save/remove，对应CRUD操作
-
 - 过滤：支持过滤参数，支持分页offset/limit
-
 - 聚合：第一个名词为聚合根，名词路径代表聚合关系
-
 - 角色：角色 + 请求 = 业务场景，Customer + ItemService.get VS Merchant + ItemService.get
-
 - 签名 = com.company.{业务域}.{上下文}.{聚合根}.api.{聚合}Service.{动作}
     - com.youzan.commodity.goods.items.api.ItemService.get
-
-- com.youzan.commodity.goods.items.api.ItemService.publish
-
-- com.youzan.commodity.goods.items.api.ItemSKUService.get
-
-- com.youzan.commodity.category.categories.api.CategoryService.get
-
-- com.youzan.commodity.goodsmanagement.items.api.ItemService.get
-
-- com.youzan.commodity.goodsmanagement.items.api.ItemSKUService.get
-
-- com.youzan.commodity.goodsmanagement.categories.api.CategoryService.get
-
-- com.youzan.commodity.goodsmanagement.categories.api.CategoryAttributeService.get
+    - com.youzan.commodity.goods.items.api.ItemService.publish
+    - com.youzan.commodity.goods.items.api.ItemSKUService.get
+    - com.youzan.commodity.category.categories.api.CategoryService.get
+    - com.youzan.commodity.goodsmanagement.items.api.ItemService.get
+    - com.youzan.commodity.goodsmanagement.items.api.ItemSKUService.get
+    - com.youzan.commodity.goodsmanagement.categories.api.CategoryService.get
+    - com.youzan.commodity.goodsmanagement.categories.api.CategoryAttributeService.get
 
 ### 响应设计原则
-
 - 沿用HTTP状态码
     - 每次请求，都有响应，响应包括状态码和数据两部分
-
 - 状态码，共100余种，均有约定解释，行业通用
     - 1XX：相关信息（API不需要）
-
-- 2XX：操作成功
-
-- 3XX：请求重定向
-
-- 4XX：客户端错误
-
-- 5XX：服务器错误
-
+    - 2XX：操作成功
+    - 3XX：请求重定向
+    - 4XX：客户端错误
+    - 5XX：服务器错误
 - 响应出错，要有error返回错误信息
 
 ## 接口设计规范
-
 ### 操作标准
 |操作|含义|说明|
 |---|---|---|
@@ -158,15 +113,9 @@
 |save|更新/Update |用作整体更新对象全部信息|
 |remove|删除/Delete |删除记录，有立即删除和非立即删除
 
-
-
 ### API规范
-
 一个商品（item）对有多个标准库存单元（SKU），如下图
-
 ![img](https://qima.feishu.cn/space/api/box/stream/download/asynccode/?code=OGE4NGJmODI0YzQwNGFhZjc1ZjljYWMwZmU1OTFmMjFfTFZjOWhlaXUzTmVKdVhqYVhDR0dOYVlnclB1OGJUMEpfVG9rZW46Ym94Y25oc01BeHRyWGh5cmJWRnRvZFRhSlhnXzE2NDk0NzQ5NDY6MTY0OTQ3ODU0Nl9WNA)
-
-
 
 #### 接口规范
 |操作|接口|语义|
@@ -185,8 +134,6 @@
 |disable|ItemService.disable(:id) |禁用某个指定的商品
 |remove|ItemSKUService.remove(:item_id,:sku_id) |删除某个指定商品的指定sku
 
-
-
 #### 常见过滤
 |参数|含义|举例|
 |---|---|---|
@@ -198,7 +145,5 @@
 |start_time |开始时间 |start_time=2020-12-27 00:00:00
 |end_time| 结束时间 |start_time=2020-12-31 00:00:00
 
-
 # 参考资料
-
 - https://restfulapi.cn/
