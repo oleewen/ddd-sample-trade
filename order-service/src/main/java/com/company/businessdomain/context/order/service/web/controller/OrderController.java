@@ -1,10 +1,13 @@
 package com.company.businessdomain.context.order.service.web.controller;
 
+import com.company.businessdomain.context.common.enums.StatusCode;
+import com.company.businessdomain.context.order.api.module.request.OrderBuyRequest;
+import com.company.businessdomain.context.order.api.module.response.OrderBuyResponse;
 import com.company.businessdomain.context.order.application.command.OrderBuyCommand;
 import com.company.businessdomain.context.order.application.result.OrderBuyResult;
 import com.company.businessdomain.context.order.application.service.OrderApplicationService;
-import com.company.businessdomain.context.order.service.web.reponse.OrderBuyResponse;
-import com.company.businessdomain.context.order.service.web.request.OrderBuyRequest;
+import com.company.businessdomain.context.order.service.factory.OrderCommandFactory;
+import com.company.businessdomain.context.order.service.factory.OrderResultFactory;
 import org.springframework.ext.common.aspect.Call;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
@@ -29,7 +32,7 @@ public class OrderController {
     @PostMapping("/buy")
     @ResponseBody
     @Call(elapsed = 1200, sample = 10000)
-    public OrderBuyResponse buy(@Valid @RequestBody OrderBuyRequest order, BindingResult bindingResult) {
+    public OrderBuyResponse buy(@Valid @RequestBody OrderBuyRequest buyRequest, BindingResult bindingResult) {
         /** 处理参数验证错误 */
         if (bindingResult.hasErrors()) {
             // TODO
@@ -37,13 +40,13 @@ public class OrderController {
         }
 
         /** 请求转命令 */
-        OrderBuyCommand buyCommand = order.asCommand();
+        OrderBuyCommand buyCommand = OrderCommandFactory.asCommand(buyRequest);
 
         /** 交易下单 */
-        OrderBuyResult result = orderApplicationService.doBuy(buyCommand);
+        OrderBuyResult buyResult = orderApplicationService.doBuy(buyCommand);
 
         /** 输出转换 */
-        return OrderBuyResponse.valueOf(result);
+        return OrderResultFactory.asResponse(buyResult);
     }
 
 }

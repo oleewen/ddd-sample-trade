@@ -1,8 +1,10 @@
 package com.company.businessdomain.context.order.api;
 
+import com.company.businessdomain.context.order.api.module.request.OrderBuyRequest;
+import com.company.businessdomain.context.order.api.module.response.OrderBuyResponse;
 import io.swagger.annotations.Api;
-import io.swagger.annotations.ApiOperation;
 
-@Api(value = "示例服务", description = "示例服务")
+@Api(value = "下单服务", description = "下单服务")
 public interface OrderService {
+    OrderBuyResponse buy(OrderBuyRequest orderRequest);
 }
