@@ -1,6 +1,5 @@
 package com.company.businessdomain.context.order.service.web.controller;
 
-import com.company.businessdomain.context.common.enums.StatusCode;
 import com.company.businessdomain.context.order.api.module.request.OrderBuyRequest;
 import com.company.businessdomain.context.order.api.module.response.OrderBuyResponse;
 import com.company.businessdomain.context.order.application.command.OrderBuyCommand;

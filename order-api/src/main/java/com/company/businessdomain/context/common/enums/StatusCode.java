@@ -1,10 +1,11 @@
 package com.company.businessdomain.context.common.enums;
 
+import org.springframework.ext.common.consts.StringConst;
 import org.springframework.ext.common.object.Status;
 
 public enum StatusCode implements Status {
     SERVICE_RUN_SUCCESS(200, "服务运行成功"),
-    PARAMETER_VALIDATE_ILLEGAL(10001, "参数非法:%s"),
+    PARAMETER_VALIDATE_ILLEGAL(10001, "参数%s非法"),
     PARAM_IS_EMPTY(10002, "参数%s不能为空"),
     DATA_NOT_EXIST(10003, "%s不存在"),
     JSON_FORMAT_ERROR(10004, "JSON格式不正确"),
@@ -39,7 +40,7 @@ public enum StatusCode implements Status {
 
     @Override
     public String getMessage() {
-        return String.format(msg, "");
+        return String.format(msg, StringConst.EMPTY);
     }
 
     @Override

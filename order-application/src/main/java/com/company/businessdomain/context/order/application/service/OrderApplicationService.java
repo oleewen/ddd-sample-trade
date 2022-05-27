@@ -4,6 +4,7 @@ import com.company.businessdomain.context.order.application.action.InventoryLock
 import com.company.businessdomain.context.order.application.action.OrderCreateAction;
 import com.company.businessdomain.context.order.application.action.OrderEnableAction;
 import com.company.businessdomain.context.order.application.command.OrderBuyCommand;
+import com.company.businessdomain.context.order.application.factory.OrderBuyResultFactory;
 import com.company.businessdomain.context.order.application.result.OrderBuyResult;
 import com.company.businessdomain.context.order.domain.model.Order;
 import org.springframework.stereotype.Component;
@@ -48,6 +49,6 @@ public class OrderApplicationService {
         }
 
         // 结果封装
-        return OrderBuyResult.create(order);
+        return OrderBuyResultFactory.INSTANCE.toResult(order);
     }
 }

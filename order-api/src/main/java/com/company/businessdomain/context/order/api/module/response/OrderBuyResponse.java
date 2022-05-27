@@ -17,4 +17,16 @@ public class OrderBuyResponse extends Response<OrderBuyDTO> {
     public static OrderBuyResponse empty() {
         return EMPTY;
     }
+
+    public static OrderBuyResponse success() {
+        return new OrderBuyResponse(StatusCode.SERVICE_RUN_SUCCESS);
+    }
+
+    public static OrderBuyResponse failure() {
+        return new OrderBuyResponse(StatusCode.PARAMETER_VALIDATE_ILLEGAL);
+    }
+
+    public static OrderBuyResponse error() {
+        return new OrderBuyResponse(StatusCode.SERVICE_RUN_ERROR);
+    }
 }

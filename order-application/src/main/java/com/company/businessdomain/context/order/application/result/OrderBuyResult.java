@@ -1,6 +1,7 @@
 package com.company.businessdomain.context.order.application.result;
 
 import com.company.businessdomain.context.order.domain.model.Order;
+import lombok.Data;
 
 /**
  * 交易下单结果对象
@@ -8,6 +9,7 @@ import com.company.businessdomain.context.order.domain.model.Order;
  * @author only
  * @date 2020-05-22
  */
+@Data
 public class OrderBuyResult {
     /** 订单id */
     private Long orderId;
@@ -23,17 +25,4 @@ public class OrderBuyResult {
     private Long amount;
     /** 订单状态 */
     private Integer status;
-
-    public static OrderBuyResult create(Order order) {
-        OrderBuyResult result = new OrderBuyResult();
-        result.orderId = order.getOrderId().value();
-        result.goodsId = order.getGoodsId().value();
-        result.buyerId = order.getBuyerId().value();
-        result.sellerId = order.getSellerId().value();
-        result.itemCount = order.getItemCount();
-        result.amount = order.getAmount().value();
-        result.status = order.getStatus().value();
-
-        return result;
-    }
 }
