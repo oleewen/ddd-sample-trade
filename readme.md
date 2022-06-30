@@ -4,26 +4,26 @@
 
     --------------              --------------
     |            |              |            |
-    |   client   |              |  service   |_ __ __ __ __ __ __ __ __ __ __ __ __ __ __ __ __ __ __ __ __ _
-    |            |              |            |                                    \                          \
-    --------------              --------------                                     \                          \
-                \                 /        \                                        \                          \
-                 \               /          \                                        \                          \
-                  \             /            \                                        \                          \
-                  _\|         |/_            _\|                                      _\|                        _\|
-                  --------------               ---------------               --------------------              ----------------
-                  |            |               |             |               |                  |              |              |
-                  |     api    |               | application |               |  infrastructure  |              |  dependency  |
-                  |            |               |             |               |                  |              |              |
-                  --------------               ---------------               --------------------              ----------------
-                                                             \                  /                                 /
-                                                              \                /                                 /
-                                                               \              /                                 /
-                                                               _\|          |/_                                / 
-                                                                --------------                                /
-                                                                |            |                               /  
-                                                                |   domain   |/__ __ __ __ __ __ __ __ __ __/ 
-                                                                |            |\
+    |   client   |              |  service   |_ __ __ __ __ __ __ __ __ __ __ __ _
+    |            |              |            |                                    \                 
+    --------------              --------------                                     \                
+                \                 /        \                                        \               
+                 \               /          \                                        \              
+                  \             /            \                                        \             
+                  _\|         |/_            _\|                                      _\|           
+                  --------------               ---------------               --------------------   
+                  |            |               |             |               |                  |   
+                  |     api    |               | application |               |  infrastructure  |   
+                  |            |               |             |               |                  |   
+                  --------------               ---------------               --------------------   
+                                                             \                  /                   
+                                                              \                /                    
+                                                               \              /                     
+                                                               _\|          |/_                     
+                                                                --------------                      
+                                                                |            |                      
+                                                                |   domain   | 
+                                                                |            |
                                                                 --------------
 
 ## 常见架构模式
@@ -71,20 +71,13 @@
         |- config
         |- entity
         |- mapper
-        \- factory
-    ```
-- dependency：资源层，实现数据访问
-    - 含数据访问层dal、服务调用call，数据对象&领域对象工厂
-    - 代码结构如下
-    ```
-    - com.${company}.${businessdomain}.${context}.${aggregateroot}
-      \- dependency
+        |- message
         |- dal
         |- call
         \- factory
    ```
 - api：公共api包，含公共常量&通用定义，服务接口定义
-    - RPC服务接口定义Service
+    - RPC服务接口定义Service（api领域开放接口，service领域封闭接口，open开放接口）
     - 输入输出对象：Request、Response、DTO
     - 开放的常量const、枚举enum、通用util类、异常类
     - 代码结构如下
@@ -93,33 +86,38 @@
       |- common
       | |- consts
       | |- enums
-      | \_ exception
+      | \- exception
     - com.${company}.${businessdomain}.${context}.${aggregateroot}
-      \- api
-      |- module
-      | |- request
-      | |- response
-      | \_ dto
-      \_ ${Aggregate}Service
+      \- api|service|open
+        |- module
+        | |- request
+        | |- response
+        | \- dto
+        \- ${Aggregate}Service
       ```
 - client：实现富客户端
     - 富客户端
     - 代码结构如下
     ```
     - com.${company}.${businessdomain}.${context}.${aggregateroot}
-      \_ client
+      \- ${Aggregate}Client
     ```
 - service：用户接口层，即表现层，实现表现层逻辑（协议、输入&输出转换）
     - 定义service层接口（HTTP协议）和实现（RPC协议）
     - 代码结构如下
     ```
     - com.${company}.${businessdomain}.${context}.${aggregateroot}
-      |- service
+        |- message
+        | |- consumer  
+        | \- listener
+        |- job
+        | |- task
+        | \- handle|- service
         |- rpc
-        | \_ ${Aggregate}ServiveImpl
+        | \- ${Aggregate}ServiveImpl
         \- web
           |- controller
-          |  \_ ${Aggregate}Controller
+          |  \- ${Aggregate}Controller
           |- request
           |- response
           |- config
