@@ -10,7 +10,7 @@
     <properties>
         <start-class>com.compan.system.order.ApplicationStarter</start-class>
         <spring.boot.version>1.5.3.RELEASE</spring.boot.version>
-        <spring.version>4.3.8.RELEASE</spring.version>
+        <spring.version>5.2.20.RELEASE</spring.version>
         <springfox.version>2.7.0</springfox.version>
     </properties>
 
