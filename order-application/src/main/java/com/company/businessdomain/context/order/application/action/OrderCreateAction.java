@@ -26,7 +26,7 @@ public class OrderCreateAction {
 
     public Order create(OrderBuyCommand buy) {
         /** 查询商品 */
-        Goods goods = itemQueryFacade.requireGoodsById(buy.getGoodsId());
+        Goods goods = itemQueryFacade.requireGoods(buy.getGoodsId());
 
         /** 创建订单 */
         return orderDomainService.create(buy.getBuyerId(), goods, buy.getItemCount());

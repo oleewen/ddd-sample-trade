@@ -20,7 +20,7 @@ public class ItemQueryFacade {
     private GoodsRepository goodsRepository;
 
     @Cacheable
-    public Goods requireGoodsById(Long goodsId) {
+    public Goods requireGoods(Long goodsId) {
         return goodsRepository.acquireGoods(goodsId);
     }
 }
