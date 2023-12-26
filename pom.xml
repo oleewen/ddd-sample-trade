@@ -15,13 +15,14 @@
     </properties>
 
     <modules>
-        <module>order-service</module>
+        <module>order-boot</module>
         <module>order-infrastructure</module>
-        <module>order-dependency</module>
+        <module>order-service</module>
         <module>order-application</module>
         <module>order-domain</module>
         <module>order-client</module>
         <module>order-api</module>
+        <module>order-service</module>
     </modules>
 
     <dependencyManagement>
@@ -37,11 +38,6 @@
             <dependency>
                 <groupId>com.company.system</groupId>
                 <artifactId>order-infrastructure</artifactId>
-                <version>${project.version}</version>
-            </dependency>
-            <dependency>
-                <groupId>com.company.system</groupId>
-                <artifactId>order-dependency</artifactId>
                 <version>${project.version}</version>
             </dependency>
             <dependency>

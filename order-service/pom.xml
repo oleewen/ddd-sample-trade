@@ -1,30 +1,26 @@
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
     <parent>
-        <artifactId>order</artifactId>
         <groupId>com.company.system</groupId>
+        <artifactId>order</artifactId>
         <version>1.0.0-SNAPSHOT</version>
     </parent>
-    <modelVersion>4.0.0</modelVersion>
 
     <artifactId>order-service</artifactId>
-    <packaging>jar</packaging>
 
-    <name>order-service</name>
-    <url>http://maven.apache.org</url>
+    <properties>
+        <maven.compiler.source>8</maven.compiler.source>
+        <maven.compiler.target>8</maven.compiler.target>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+    </properties>
 
     <dependencies>
         <!-- ======= -->
         <!-- 模块依赖 -->
         <!-- ======= -->
-        <dependency>
-            <groupId>com.company.system</groupId>
-            <artifactId>order-infrastructure</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>com.company.system</groupId>
-            <artifactId>order-dependency</artifactId>
-        </dependency>
         <dependency>
             <groupId>com.company.system</groupId>
             <artifactId>order-application</artifactId>
@@ -84,26 +80,4 @@
             <artifactId>spring-boot-test</artifactId>
         </dependency>
     </dependencies>
-
-    <build>
-        <finalName>order-web</finalName>
-        <plugins>
-            <plugin>
-                <groupId>org.springframework.boot</groupId>
-                <artifactId>spring-boot-maven-plugin</artifactId>
-                <version>${spring.boot.version}</version>
-                <configuration>
-                    <mainClass>${start-class}</mainClass>
-                    <layout>ZIP</layout>
-                </configuration>
-                <executions>
-                    <execution>
-                        <goals>
-                            <goal>repackage</goal>
-                        </goals>
-                    </execution>
-                </executions>
-            </plugin>
-        </plugins>
-    </build>
 </project>

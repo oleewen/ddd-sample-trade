@@ -2,11 +2,11 @@
 
 ## 模块依赖关系
 
-    --------------              --------------
-    |            |              |            |
-    |   client   |              |  service   |_ __ __ __ __ __ __ __ __ __ __ __ _
-    |            |              |            |                                    \                 
-    --------------              --------------                                     \                
+    --------------              --------------                               ---------------
+    |            |              |            |                               |             |
+    |   client   |              |  service   | /_ __ __ __ __ __ __ __ __ __ |    boot     | 
+    |            |              |            | \                             |             |                                                    
+    --------------              --------------                               ---------------                                                    
                 \                 /        \                                        \               
                  \               /          \                                        \              
                   \             /            \                                        \             
@@ -41,7 +41,7 @@
     - 领域模型层：领域对象model、领域服务service、资源库repository、事件event、查询门面facade
     - 代码结构如下
     ```
-    - com.${company}.${businessdomain}.${context}.${aggregateroot}
+    - com.${company}.${businessdomain}.${context}
       \- domain
       |- service
       |- facade
@@ -53,7 +53,7 @@
     - 面向用例或用户故事，实现处理流程（service）、处理节点（action）
     - 代码结构如下
     ```
-    - com.${company}.${businessdomain}.${context}.${aggregateroot}
+    - com.${company}.${businessdomain}.${context}
       \- application
         |- service
         |- action
@@ -65,7 +65,7 @@
     - 含数据访问对象dao、数据库配置config、数据对象entity、数据映射mapper、数据对象&领域对象工厂
     - 代码结构如下
     ```
-    - com.${company}.${businessdomain}.${context}.${aggregateroot}
+    - com.${company}.${businessdomain}.${context}
       \- infrastructure
         |- dao
         |- config
@@ -87,7 +87,7 @@
       | |- consts
       | |- enums
       | \- exception
-    - com.${company}.${businessdomain}.${context}.${aggregateroot}
+    - com.${company}.${businessdomain}.${context}
       \- api|service|open
         |- module
         | |- request
@@ -99,14 +99,14 @@
     - 富客户端
     - 代码结构如下
     ```
-    - com.${company}.${businessdomain}.${context}.${aggregateroot}
+    - com.${company}.${businessdomain}.${context}
       \- ${Aggregate}Client
     ```
 - service：用户接口层，即表现层，实现表现层逻辑（协议、输入&输出转换）
     - 定义service层接口（HTTP协议）和实现（RPC协议）
     - 代码结构如下
     ```
-    - com.${company}.${businessdomain}.${context}.${aggregateroot}
+    - com.${company}.${businessdomain}.${context}
         |- message
         | |- consumer  
         | \- listener
