@@ -1,0 +1,16 @@
+spring:
+  datasource:
+    url: jdbc:postgresql://ep-crimson-surf-a169cwzh.ap-southeast-1.aws.neon.tech/neondb?sslmode=require
+    username: neondb_owner
+    password: npg_zVCjx5XpDLo7
+    driver-class-name: org.postgresql.Driver
+    hikari:
+      connection-timeout: 30000
+      maximum-pool-size: 10
+
+mybatis:
+  configuration:
+    map-underscore-to-camel-case: true
+    default-fetch-size: 100
+    default-statement-timeout: 30
+  type-aliases-package: com.cursor.learning.entity 
