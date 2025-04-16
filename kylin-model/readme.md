@@ -94,7 +94,7 @@
         | |- response
         | \- dto
         \- ${Aggregate}Service
-      ```
+    ```
 - client：实现富客户端
     - 富客户端
     - 代码结构如下
