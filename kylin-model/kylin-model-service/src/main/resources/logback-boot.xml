@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<configuration>
+    <springProperty scope="context" name="root.log.level" source="root.log.level"/>
+    <springProperty scope="context" name="root.log.path" source="root.log.path"/>
+    <appender name="STDOUT" class="ch.qos.logback.core.ConsoleAppender">
+        <target>System.out</target>
+        <filter class="ch.qos.logback.classic.filter.ThresholdFilter">
+            <level>WARN</level>
+        </filter>
+        <!-- encoder 默认配置为PatternLayoutEncoder -->
+        <encoder>
+            <pattern>[%p][%d{yyyy-MM-dd'T'HH:mm:ss.SSSZ}][%c{0}.%M] _am||traceid=%X{traceid}||spanid=%X{spanid}||%m%n</pattern>        </encoder>
+    </appender>
+    <appender name="STDERR" class="ch.qos.logback.core.ConsoleAppender">
+        <target>System.out</target>
+        <filter class="ch.qos.logback.classic.filter.ThresholdFilter">
+            <level>ERROR</level>
+        </filter>
+        <!-- encoder 默认配置为PatternLayoutEncoder -->
+        <encoder>
+            <pattern>[%p][%d{yyyy-MM-dd'T'HH:mm:ss.SSSZ}][%c{0}.%M] _am||traceid=%X{traceid}||spanid=%X{spanid}||%m%n</pattern>        </encoder>
+    </appender>
+    <appender name="APP_FILE" class="ch.qos.logback.core.rolling.RollingFileAppender">
+        <file>${root.log.path}/app.log</file>
+        <filter class="ch.qos.logback.classic.filter.LevelFilter">
+            <level>${root.log.level}</level>
+            <onMatch>ACCEPT</onMatch>
+            <onMismatch>DENY</onMismatch>
+        </filter>
+        <encoder>
+            <pattern>[%p][%d{yyyy-MM-dd'T'HH:mm:ss.SSSZ}][%c{0}.%M] _am||traceid=%X{traceid}||spanid=%X{spanid}||%m%n</pattern>        </encoder>
+        <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+            <fileNamePattern>${root.log.path}/app.%d{yyyyMMdd}.log</fileNamePattern>
+            <maxHistory>30</maxHistory>
+        </rollingPolicy>
+    </appender>
+    <appender name="SPRING_FILE" class="ch.qos.logback.core.rolling.RollingFileAppender">
+        <file>${root.log.path}/spring.log</file>
+        <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+            <fileNamePattern>${root.log.path}/spring.log.%d{yyyyMMdd}</fileNamePattern>
+        </rollingPolicy>
+        <encoder class="ch.qos.logback.classic.encoder.PatternLayoutEncoder">
+            <pattern>[%p][%d{yyyy-MM-dd'T'HH:mm:ss.SSSZ}][%c{0}.%M] _am||traceid=%X{traceid}||spanid=%X{spanid}||%m%n</pattern>        </encoder>
+    </appender>
+    <appender name="ERROR_FILE" class="ch.qos.logback.core.rolling.RollingFileAppender">
+        <filter class="ch.qos.logback.classic.filter.ThresholdFilter">
+            <level>ERROR</level>
+        </filter>
+        <file>${root.log.path}/error.log</file>
+        <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+            <fileNamePattern>${root.log.path}/error.log.%d{yyyyMMdd}</fileNamePattern>
+            <maxHistory>30</maxHistory>
+        </rollingPolicy>
+        <encoder class="ch.qos.logback.classic.encoder.PatternLayoutEncoder">
+            <pattern>[%p][%d{yyyy-MM-dd'T'HH:mm:ss.SSSZ}][%c{0}.%M] _am||traceid=%X{traceid}||spanid=%X{spanid}||%m%n</pattern>        </encoder>
+    </appender>
+
+    <appender name="TRACE_LOG" class="ch.qos.logback.core.rolling.RollingFileAppender">
+        <file>${root.log.path}/trace.log</file>
+        <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+            <fileNamePattern>${root.log.path}/trace.log.%d{yyyyMMdd}</fileNamePattern>
+            <maxHistory>7</maxHistory>
+        </rollingPolicy>
+        <encoder>
+            <pattern>[%p][%d{yyyy-MM-dd'T'HH:mm:ss.SSSZ}][%c{0}.%M] _am||traceid=%X{traceid}||spanid=%X{spanid}||%m%n</pattern>            <charset>UTF-8</charset>
+        </encoder>
+    </appender>
+
+    <logger name="trace_log" additivity="false" level="${root.log.level}">
+        <appender-ref ref="TRACE_LOG" />
+    </logger>
+
+    <root level="${root.log.level}">
+        <appender-ref ref="APP_FILE"/>
+        <appender-ref ref="ERROR_FILE" />
+    </root>
+    <logger name="org.springframework" level="${root.log.level}" additivity="false">
+        <appender-ref ref="SPRING_FILE"/>
+        <appender-ref ref="ERROR_FILE" />
+    </logger>
+
+</configuration>

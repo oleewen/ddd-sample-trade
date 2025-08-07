@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <parent>
+        <groupId>com.transformer</groupId>
+        <artifactId>transformer</artifactId>
+        <version>1.1.0.RELEASE</version>
+    </parent>
+
+    <modelVersion>4.0.0</modelVersion>
+
+    <artifactId>transformer-dubbo</artifactId>
+    <packaging>jar</packaging>
+    <version>${parent.version}</version>
+
+    <dependencies>
+        <!-- ======= -->
+        <!-- 模块依赖 -->
+        <!-- ======= -->
+        <dependency>
+            <groupId>com.transformer</groupId>
+            <artifactId>transformer-common</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>com.transformer</groupId>
+            <artifactId>transformer-util</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>com.transformer</groupId>
+            <artifactId>transformer-exception</artifactId>
+        </dependency>
+
+        <!-- ======= -->
+        <!-- 二方依赖 -->
+        <!-- ======= -->
+        <dependency>
+            <groupId>com.zto.titans</groupId>
+            <artifactId>titans-dubbo</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>com.zto.titans</groupId>
+            <artifactId>titans-common</artifactId>
+        </dependency>
+
+        <!-- ======= -->
+        <!-- 三方依赖 -->
+        <!-- ======= -->
+        <dependency>
+            <groupId>org.projectlombok</groupId>
+            <artifactId>lombok</artifactId>
+            <version>RELEASE</version>
+            <scope>compile</scope>
+        </dependency>
+
+        <!-- validator-->
+        <dependency>
+            <groupId>javax.validation</groupId>
+            <artifactId>validation-api</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.hibernate.validator</groupId>
+            <artifactId>hibernate-validator</artifactId>
+        </dependency>
+
+
+
+    </dependencies>
+
+</project>

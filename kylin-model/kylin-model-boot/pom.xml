@@ -1,0 +1,51 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <parent>
+        <artifactId>kylin-model</artifactId>
+        <groupId>com.kylin</groupId>
+        <version>1.0.0-SNAPSHOT</version>
+    </parent>
+    <modelVersion>4.0.0</modelVersion>
+
+    <artifactId>kylin-model-boot</artifactId>
+    <packaging>jar</packaging>
+
+    <name>kylin-model-boot</name>
+    <url>http://maven.apache.org</url>
+
+    <dependencies>
+        <!-- ======= -->
+        <!-- 模块依赖 -->
+        <!-- ======= -->
+        <dependency>
+            <groupId>com.kylin</groupId>
+            <artifactId>kylin-model-infrastructure</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>com.kylin</groupId>
+            <artifactId>kylin-model-service</artifactId>
+        </dependency>
+    </dependencies>
+
+    <build>
+        <finalName>kylin-model-boot</finalName>
+        <plugins>
+            <plugin>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-maven-plugin</artifactId>
+                <version>${spring.boot.version}</version>
+                <configuration>
+                    <mainClass>${start-class}</mainClass>
+                    <layout>ZIP</layout>
+                </configuration>
+                <executions>
+                    <execution>
+                        <goals>
+                            <goal>repackage</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
+        </plugins>
+    </build>
+</project>
